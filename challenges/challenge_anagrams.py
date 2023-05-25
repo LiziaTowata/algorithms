@@ -2,7 +2,7 @@ def merge_sort(string: str):
     if len(string) <= 1:
         return string
 
-    middle = len(string)
+    middle = len(string) // 2
     left = string[:middle]
     right = string[middle:]
 
@@ -12,22 +12,26 @@ def merge_sort(string: str):
     return "".join(merge(left_orders, right_orders))
 
 
-def merge(first_part, second_part):
+def merge(left: list[str], right: list[str]):
+    result = []
+    esq = 0
+    dir = 0
 
-    if not first_part:
-        return second_part
+    while esq < len(left) and dir < len(right):
+        if left[esq] < right[dir]:
+            result.append(left[esq])
+            esq += 1
+        else:
+            result.append(right[dir])
+            dir += 1
 
-    if not second_part:
-        return first_part
+    result += left[esq:]
+    result += right[dir:]
 
-    if first_part[0] > second_part[0]:
-        return [second_part[0]] + merge(first_part, second_part[1:])
-    else:
-        return [first_part[0]] + merge(first_part[1:], second_part)
+    return result
 
 
-def is_anagram(first_string, second_string):
-
+def is_anagram(first_string: str, second_string: str):
     first_lower = first_string.lower() if first_string else ""
     second_lower = second_string.lower() if second_string else ""
 
@@ -37,6 +41,6 @@ def is_anagram(first_string, second_string):
     if not first_string or not second_string:
         return (first_orders, second_orders, False)
 
-    anagram = first_orders == second_orders
+    result_anagrams = first_orders == second_orders
 
-    return (first_orders, second_orders, anagram)
+    return (first_orders, second_orders, result_anagrams)
