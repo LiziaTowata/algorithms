@@ -44,3 +44,5 @@ def is_anagram(first_string: str, second_string: str):
     result_anagrams = first_orders == second_orders
 
     return (first_orders, second_orders, result_anagrams)
+
+# com ajuda da Cristiane Kizelevicius - Turma 24B
