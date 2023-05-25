@@ -38,4 +38,5 @@ def is_anagram(first_string, second_string):
         return (first_orders, second_orders, False)
 
     anagram = first_orders == second_orders
+
     return (first_orders, second_orders, anagram)
